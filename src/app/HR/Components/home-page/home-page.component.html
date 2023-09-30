@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary   ">
+    <div class="container  ">
+      <a class="navbar-brand fs-2 " routerLink="/">ERP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item ms-2">
+            <a  class="nav-link active fs-5 fw-medium" aria-current="page" routerLink="/"> Home
+                <!-- <mat-icon  matTooltip="Home page" class="fs-2 d-block me-1">home</mat-icon> -->
+            </a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="nav-link active fs-5 fw-medium"  aria-current="page" routerLink="/dashboard"> HR 
+                <!-- <i matTooltip="HR System"  class="fs-3 fa-brands fa-hire-a-helper" style="color: #7c7c7c;"></i> -->
+            </a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="nav-link active fs-5 fw-medium"  aria-current="page" routerLink="/"> opreation 
+                <!-- <i matTooltip="HR System"  class="fs-3 fa-brands fa-hire-a-helper" style="color: #7c7c7c;"></i> -->
+            </a>
+          </li>
+          <li class="nav-item ms-2">
+            <a  class="nav-link active fs-4 fw-medium" aria-current="page" routerLink="/dashboard"> 
+                <mat-icon matTooltip="notifctions" class="fs-3 d-block me-1" >notifications_active</mat-icon>
+            </a>
+          </li>
+          <li class="nav-item ms-2 fs-4 fw-medium">
+            <a  class="nav-link" href="#">
+                <mat-icon matTooltip="log In" class="fs-3  d-block">account_circle</mat-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <mat-form-field appearance="outline" class=" w-100 container animate__animated animate__fadeInUp " >
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="EX. Ramzy" formControlName="middleName" >
+        <mat-icon class="me-4 fs-4" matSuffix>search</mat-icon>
+        </mat-form-field>
+  </div>
+
+  <app-landing></app-landing>
+

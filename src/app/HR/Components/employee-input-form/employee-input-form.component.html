@@ -1,0 +1,224 @@
+<main class="container animate__animated  animate__fadeIn ">
+    <!-- <h1 class="animate__animated animate__bounce">An animated element</h1> -->
+    <h1 class="main-tittle" >HR Department</h1>
+    <form [formGroup]="AddEmployeeForm" >
+        <div class="personal-Data "  >
+            <h2 class="sub-tittle">personal Data</h2>
+            <div class="d-flex justify-content-center section-1">
+                <mat-form-field appearance="outline" class="mx-1" >
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="EX. Michael" formControlName="FirstName">
+                    <mat-icon matSuffix>badge</mat-icon>
+                    <mat-error>{{FirstNameErrorNessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="mx-1" >
+                    <mat-label>Middle Name</mat-label>
+                    <input matInput placeholder="EX. Ramzy" formControlName="middleName" >
+                    <mat-icon matSuffix>badge</mat-icon>
+                    <mat-error>{{middletNameErrorNessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+                <div class="d-flex justify-content-center section-2 ">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="EX. Habib" formControlName="lastName" >
+                        <mat-icon matSuffix>badge</mat-icon>
+                        <mat-error>{{lastNameErrorNessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Gender</mat-label>
+                        <mat-select formControlName="Gender" >
+                        <mat-option value="male" >Male</mat-option>
+                        <mat-option value="Female" >Female</mat-option>
+                        </mat-select>
+                        <mat-error>{{GenderErrorNessage()}}</mat-error>
+                    </mat-form-field>
+            </div>
+        </div>
+        <div class="idintifction-Data">
+            <h2 class="sub-tittle">Identification Data</h2>
+            <div class="d-flex justify-content-center section-1 ">
+                <mat-form-field appearance="outline" class="mx-1" >
+                    <mat-label>Identification Type</mat-label>
+                    <mat-select formControlName="DocumentType" >
+                    <mat-option value="passport" >passport</mat-option>
+                    <mat-option value="National ID" >National ID</mat-option>
+                    </mat-select>
+                    <!-- <mat-error>{{GenderErrorNessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="mx-1" >
+                    <mat-label>Identification Number</mat-label>
+                    <input matInput placeholder="EX. 24916483" formControlName="DocumentNumber" >
+                    <mat-icon matSuffix><i class="fa-solid fa-id-card"></i></mat-icon>
+                    <!-- <mat-error>{{DocumentNumberErrorNessage()}}</mat-error> -->
+                </mat-form-field>
+        </div>
+        </div>
+        <div class="eduction-Data">
+            <h2 class="sub-tittle">Eduction Data</h2>
+            <div class="d-flex justify-content-center section-1">
+                <mat-form-field appearance="outline" class="mx-1" >
+                    <mat-label>Eduction Degree</mat-label>
+                    <mat-select formControlName="EductionDegree" >
+                    <mat-option value="Bachelor's Degree" >Bachelor's Degree</mat-option>
+                    <mat-option value="Master's Degree" >Master's Degree</mat-option>
+                    <mat-option value="Doctorate" >Doctorate</mat-option>
+                    <mat-option value="other" >other</mat-option>
+                    </mat-select>
+                    <!-- <mat-error>{{EductionDegreeErrorNessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="mx-1" >
+                    <mat-label>School Name</mat-label>
+                    <input matInput placeholder="EX. Cairo Universty" formControlName="SchoolName" >
+                    <mat-icon matSuffix>school</mat-icon>
+                    <mat-error>{{SchoolNameErrorNessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="contact-Data">
+                <h2 class="sub-tittle">Contact Data</h2>
+                <div class="d-flex justify-content-center section-1">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="EX. ramzymika@gmail.com" formControlName="Email"  >
+                        <mat-icon matSuffix>mail</mat-icon>
+                        <mat-error>{{mailErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput placeholder="EX. +201222353187" formControlName="Phone" >
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-error>{{phoneErrorNessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>ٍPostal Code</mat-label>
+                        <input matInput placeholder="EX. 24916483" formControlName="PostalCode" >
+                        <mat-icon matSuffix>markunread_mailbox</mat-icon>
+                        <mat-error>{{postalCodeErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex section-2">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>ٍStreet Address</mat-label>
+                        <input matInput placeholder="EX. 7 Gamal Abd ALnasser"  formControlName="Address" >
+                        <mat-icon matSuffix>home</mat-icon>
+                        <mat-error>{{AddressErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>ٍCity</mat-label>
+                        <input matInput placeholder="EX. Cairo" formControlName="city" >
+                        <mat-icon matSuffix>location_city</mat-icon>
+                        <mat-error>{{cityErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>ٍState</mat-label>
+                        <input matInput placeholder="EX. Cairo" formControlName="state" >
+                        <mat-icon matSuffix>public</mat-icon>
+                        <mat-error>{{phoneErrorNessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Country</mat-label>
+                        <input matInput placeholder="EX. Country" formControlName="country" >
+                        <mat-icon matSuffix>public</mat-icon>
+                        <mat-error>{{countryErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="jop-Data">
+                <h2 class="sub-tittle">Jop Data</h2>
+                <div class="d-flex justify-content-center section-1">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Hire Type</mat-label>
+                        <mat-select formControlName="HireType" >
+                        <mat-option value="Permanent employee" >Permanent employee</mat-option>
+                        <mat-option value="Contract" >Contract</mat-option>
+                        </mat-select>
+                        <mat-error>{{HireTypeErrorNessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Hire Date</mat-label>
+                        <input matInput [matDatepicker]="picker" readonly="true" formControlName="HireDate">
+                        <mat-error>{{HireDateErrorNessage()}}</mat-error>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>  
+                </div>
+                <div class="d-flex justify-content-center section-2 ">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Jop ID</mat-label>
+                        <mat-select placeholder="EX. 25645181811" formControlName="jopID">
+                        <mat-option *ngFor="let jopId of jopsId" [value]="jopId.id" >{{jopId.jobtitle}}</mat-option>
+                        <!-- <mat-option value="1" >Backend</mat-option>
+                        <mat-option value="2" >Manager</mat-option> -->
+                        </mat-select>
+                        <mat-error>{{jopIDErrorNessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Manager ID</mat-label>
+                        <mat-select placeholder="EX. 25645181811" formControlName="managerID">
+                        <mat-option value="1" >x</mat-option>
+                        <mat-option value="2" >y</mat-option>
+                        <mat-option value="3" >z</mat-option>
+                        </mat-select>
+                        <!-- <mat-error>{{EductionDegreeErrorNessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Department ID</mat-label>
+                        <mat-select placeholder="EX. 25645181811" formControlName="DepartmentID" >
+                        <mat-option *ngFor="let DepartmentID of DepartmentsID" [value]="DepartmentID.id" >{{DepartmentID.name}}</mat-option>
+                        </mat-select>
+                        <!-- <mat-error>{{EductionDegreeErrorNessage()}}</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="d-flex justify-content-center section-3">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Branch ID</mat-label>
+                        <mat-select placeholder="EX. 25645181811" formControlName="BranchID" >
+                        <mat-option *ngFor="let BranchId of BranchsId"  [value]="BranchId.id" >{{BranchId.name}}</mat-option>
+
+                        </mat-select>
+                        <!-- <mat-error>{{EductionDegreeErrorNessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Vacation Hours</mat-label>
+                        <input type="number" matInput placeholder="EX. 10" formControlName="VacationHours" >
+                        <mat-icon matSuffix>hourglass_empty</mat-icon>
+                        <mat-error>{{VacationHoursErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Sick Leave Hours</mat-label>
+                        <input type="number" matInput placeholder="EX. 10" formControlName="SickLeaveHours" >
+                        <mat-icon matSuffix>hourglass_top</mat-icon>
+                        <mat-error>{{SickLeaveHoursErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex justify-content-center section-4">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Delete Tag</mat-label>
+                        <mat-select placeholder="EX. true || False" formControlName="DeleteTag" >
+                        <mat-option value="True" >True</mat-option>
+                        <mat-option value="False" >False</mat-option>
+                        </mat-select>
+                        <!-- <mat-error>{{SickLeaveHoursErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Created By</mat-label>
+                        <input type="number" matInput placeholder="EX. 24916483" formControlName="CreatedBy" >
+                        <mat-icon matSuffix>hourglass_empty</mat-icon>
+                        <mat-error>{{CreatedByErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <mat-label>Created Date</mat-label>
+                        <input matInput [matDatepicker]="picker1" readonly="true" formControlName="CreatedDate">
+                        <mat-error>{{CreatedDateErrorMessage()}}</mat-error>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field> 
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <!-- <button (click)="AddnewEmployee()" class="btn btn-info text-white">Add New Employee</button> -->
+            <button [disabled]="!AddEmployeeForm.valid" (click)="AddnewEmployee()" class="btn btn-info text-white">Add New Employee</button>
+        </div>
+    </form>
+</main>

@@ -1,0 +1,30 @@
+.text{
+    position: absolute;
+    width: 360px !important;
+    height: 300px;
+    background-color: transparent;
+    top: 90px;
+    left: 50px;
+}
+/* .ERP{
+    color: aquamarine;
+} */
+@media (max-width : 450px) {
+    .text{
+        width: 95% !important;
+        left: 15px;
+
+    }
+}
+.landing-paragrph{
+    line-height: 1.6;
+}
+.content{
+    position: relative;
+}
+
+.image{
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 485px !important;
+}

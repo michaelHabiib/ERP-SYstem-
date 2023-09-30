@@ -1,0 +1,17 @@
+<mat-drawer-container class="example-container" >
+    <mat-drawer #drawer >
+        <div class="container">
+            <h3  >Welcome in HR Department</h3>
+            <h5 routerLink="/dashboard" (click)="drawer.close()" >Dashboard</h5>
+            <h5  routerLink="/newEmployeeForm" (click)="drawer.close()">Add New Employee</h5>
+            <h5  routerLink="/EmployeeData" (click)="drawer.close()">Manage Employees Data</h5>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <p class="nav" > 
+            <mat-icon matSuffix class="fs-2 mx-3 my-3 text-white fw-normal"  (click)="drawer.toggle()">list</mat-icon>
+        </p>
+
+
+    </mat-drawer-content>
+  </mat-drawer-container>

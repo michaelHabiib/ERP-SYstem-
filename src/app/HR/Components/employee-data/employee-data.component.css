@@ -1,0 +1,162 @@
+@keyframes move-left {
+    50% {
+        left: 0;
+    }
+    100%{
+        width: calc(50% + 1px);
+        height: calc(100% + 1px);
+        border-radius: 0;
+        left: 0;
+    }
+}
+@keyframes move-right {
+    50% {
+        right: 0;
+    }
+    100%{
+        width: 50%;
+        height: calc(100% + 1px);
+        border-radius: 0;
+        right: 0;
+    }
+}
+.main-tittle {
+    text-transform: uppercase;
+    margin: 0 auto 30px;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 30px;
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+    color: black;
+}
+.main-title:hover {
+    color: white;
+    border: 2px solid white;
+    transition-delay: 0.5s;
+}
+.main-tittle::before,
+.main-tittle::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color:#27c8a4;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.main-tittle::before {
+    left: -30px;
+}
+.main-tittle::after {
+    right: -30px;
+}
+.main-tittle:hover {
+    color: white;
+    border: none;
+    transition-delay: 0.5s;
+}
+.main-tittle:hover::before {
+    z-index: -1;
+    animation: move-left 0.5s linear forwards;
+}
+.main-tittle:hover::after {
+    z-index: -1;
+    animation: move-right 0.5s linear forwards;
+}
+form{
+  width: 100%;
+}
+table {
+    width: 100%;
+  }
+  
+tr.example-detail-row {
+  height: 0;
+}
+  
+  /* tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  } */
+  
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    /* display: flex; */
+  }
+  
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  .expandedDetail{
+    max-width: 100% !important;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+  ::ng-deep .mat-mdc-select-arrow{
+    color: #27c8a4;
+    border: none !important;
+    background-color: white !important;
+}
+mat-icon{
+  color: #27c8a4;
+  border: none !important;
+  background-color: none !important;
+}
+.button-icon{
+  color: #27c8a4;
+  border: none !important;
+  background-color: white !important;
+}
+.personal-Data .section-1 mat-form-field,
+.personal-Data .section-2 mat-form-field,
+.eduction-Data .section-1 mat-form-field,
+.idintifction-Data .section-1 mat-form-field{
+    width: calc(98%/2);
+}
+
+
+.jop-Data .section-2 mat-form-field,
+.jop-Data .section-3 mat-form-field,
+.jop-Data .section-4 mat-form-field{
+    width: calc(97%/3);
+}
+.contact-Data .section-2 mat-form-field{
+  width: calc(96%/4);
+
+}
+@media (max-width : 992px) {
+  .contact-Data .section-2 mat-form-field {
+    width: calc(96%/2);
+}
+.section-1,
+.section-2,
+.section-3,
+.section-4 {
+    flex-wrap: wrap;
+}
+mat-form-field {
+width: 100% !important;
+}
+  .mat-elevation-z8 {
+      width: 98% !important;   
+  }
+}
+  
