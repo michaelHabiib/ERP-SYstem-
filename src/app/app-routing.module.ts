@@ -4,11 +4,13 @@ import { EmployeeDataComponent } from './HR/Components/employee-data/employee-da
 import { EmployeeInputFormComponent } from './HR/Components/employee-input-form/employee-input-form.component';
 import { DashboardComponent } from './HR/Components/dashboard/dashboard.component';
 import { HomePageComponent } from './HR/Components/home-page/home-page.component';
+import { AddNewComponent } from './Opreation/Components/add-new/add-new.component';
 
 const routes: Routes = [
   {path: 'EmployeeData', component:EmployeeDataComponent},
   {path: '', component:HomePageComponent},
   {path: 'newEmployeeForm',component:EmployeeInputFormComponent},
+  {path: 'opreationForm',component:AddNewComponent},
   {path: 'dashboard',component:DashboardComponent},
 ];
 

@@ -1,6 +1,10 @@
 <main class="container animate__animated  animate__fadeIn ">
-    <!-- <h1 class="animate__animated animate__bounce">An animated element</h1> -->
-    <h1 class="main-tittle" >HR Department</h1>
+
+    <!-- <h1 class="main-tittle" >HR Department</h1> -->
+    <h1 class="text-center fs-1" >Add New Employee</h1>
+    <div class="container">
+        <button class="btn btn-info text-white fw-Semibold" routerLink="/EmployeeData" >Manage Employees Data  <mat-icon class="text-white pt-1" >manage_accounts</mat-icon> </button>
+    </div>
     <form [formGroup]="AddEmployeeForm" >
         <div class="personal-Data "  >
             <h2 class="sub-tittle">personal Data</h2>
@@ -144,7 +148,7 @@
                 </div>
                 <div class="d-flex justify-content-center section-2 ">
                     <mat-form-field appearance="outline" class="mx-1" >
-                        <mat-label>Jop ID</mat-label>
+                        <mat-label>Jop Name</mat-label>
                         <mat-select placeholder="EX. 25645181811" formControlName="jopID">
                         <mat-option *ngFor="let jopId of jopsId" [value]="jopId.id" >{{jopId.jobtitle}}</mat-option>
                         <!-- <mat-option value="1" >Backend</mat-option>
@@ -153,7 +157,7 @@
                         <mat-error>{{jopIDErrorNessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="mx-1" >
-                        <mat-label>Manager ID</mat-label>
+                        <mat-label>Manager Name</mat-label>
                         <mat-select placeholder="EX. 25645181811" formControlName="managerID">
                         <mat-option value="1" >x</mat-option>
                         <mat-option value="2" >y</mat-option>
@@ -162,7 +166,7 @@
                         <!-- <mat-error>{{EductionDegreeErrorNessage()}}</mat-error> -->
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="mx-1" >
-                        <mat-label>Department ID</mat-label>
+                        <mat-label>Department Name</mat-label>
                         <mat-select placeholder="EX. 25645181811" formControlName="DepartmentID" >
                         <mat-option *ngFor="let DepartmentID of DepartmentsID" [value]="DepartmentID.id" >{{DepartmentID.name}}</mat-option>
                         </mat-select>
@@ -171,7 +175,7 @@
                 </div>
                 <div class="d-flex justify-content-center section-3">
                     <mat-form-field appearance="outline" class="mx-1" >
-                        <mat-label>Branch ID</mat-label>
+                        <mat-label>Branch Name</mat-label>
                         <mat-select placeholder="EX. 25645181811" formControlName="BranchID" >
                         <mat-option *ngFor="let BranchId of BranchsId"  [value]="BranchId.id" >{{BranchId.name}}</mat-option>
 
@@ -191,29 +195,7 @@
                         <mat-error>{{SickLeaveHoursErrorMessage()}}</mat-error>
                     </mat-form-field>
                 </div>
-                <div class="d-flex justify-content-center section-4">
-                    <mat-form-field appearance="outline" class="mx-1" >
-                        <mat-label>Delete Tag</mat-label>
-                        <mat-select placeholder="EX. true || False" formControlName="DeleteTag" >
-                        <mat-option value="True" >True</mat-option>
-                        <mat-option value="False" >False</mat-option>
-                        </mat-select>
-                        <!-- <mat-error>{{SickLeaveHoursErrorMessage()}}</mat-error> -->
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="mx-1" >
-                        <mat-label>Created By</mat-label>
-                        <input type="number" matInput placeholder="EX. 24916483" formControlName="CreatedBy" >
-                        <mat-icon matSuffix>hourglass_empty</mat-icon>
-                        <mat-error>{{CreatedByErrorMessage()}}</mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="mx-1" >
-                        <mat-label>Created Date</mat-label>
-                        <input matInput [matDatepicker]="picker1" readonly="true" formControlName="CreatedDate">
-                        <mat-error>{{CreatedDateErrorMessage()}}</mat-error>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
-                    </mat-form-field> 
-                </div>
+
             </div>
         </div>
         <div class="d-flex justify-content-end">

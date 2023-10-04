@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { EmployeeActionService } from '../../Services/employee-action.service';
 import { EmployeeResourceServiceService } from '../../Services/employee-resource-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employee-input-form',
@@ -15,11 +17,11 @@ export class EmployeeInputFormComponent implements OnInit {
   DepartmentsID : any []  = []
   BranchsId : any []  = []
 constructor(private _EmployeeActionService : EmployeeActionService,
-  private _EmployeeResourceServiceService : EmployeeResourceServiceService){
+  private _EmployeeResourceServiceService : EmployeeResourceServiceService,
+  private _snackBar : MatSnackBar,
+  private router : Router){
 
 }
-
-
   AddEmployeeForm : FormGroup = new FormGroup({
   FirstName: new FormControl('', [Validators.required,Validators.minLength(1),Validators.maxLength(30)]),
   middleName: new FormControl('', [Validators.minLength(1),Validators.maxLength(30)]),
@@ -31,7 +33,6 @@ constructor(private _EmployeeActionService : EmployeeActionService,
   DocumentNumber: new FormControl('', [Validators.required, Validators.maxLength(50)]),
   EductionDegree: new FormControl('', ),
   SchoolName: new FormControl('', [Validators.maxLength(30)]),
-  // role: new FormControl('', [Validators.required]),
   HireDate: new FormControl( new Date(), [Validators.required]),
   HireType: new FormControl('', [Validators.required]),
   managerID: new FormControl('', ),
@@ -45,9 +46,6 @@ constructor(private _EmployeeActionService : EmployeeActionService,
   country: new FormControl('', [Validators.maxLength(30)]),
   VacationHours: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$")]),
   SickLeaveHours: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$")]),
-  DeleteTag: new FormControl('', []),
-  CreatedBy: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
-  CreatedDate: new FormControl(new Date(), [Validators.required])
 });
 AddnewEmployee () {
   console.log(this.AddEmployeeForm);
@@ -76,23 +74,27 @@ const modal =
     "country": this.AddEmployeeForm.controls['country'].value,
     "vacationHours": this.AddEmployeeForm.controls['VacationHours'].value,
     "sickLeaveHours": this.AddEmployeeForm.controls['SickLeaveHours'].value,
-    "deleteTag": Boolean(this.AddEmployeeForm.controls['DeleteTag'].value),
-    "createdBy":this.AddEmployeeForm.controls['CreatedBy'].value,
-    "createdDate": this.AddEmployeeForm.controls['CreatedDate'].value,
-    // "modifiedBy": 0,
-    // "modifiedDate": "2023-09-27T17:56:02.091Z"
+    "createdBy": 0,
   }
 console.log(modal);
 this._EmployeeActionService.addNewEmployee(modal).subscribe({
   next : (res) => {
     console.log(res);
-    this.AddEmployeeForm.reset()
+    this.openSnackBar('Employee Added Successfully')
+    this.router.navigate(['/EmployeeData']);
   },
   error : (err) => {
     console.log(err);
   }
 })
-
+}
+openSnackBar(message: string) {
+  this._snackBar.open(message, '',{
+    duration: 4000, // 5 seconds
+    panelClass: 'custom-snackbar',
+    verticalPosition: 'bottom', 
+    horizontalPosition: 'center'
+  });
 }
 FirstNameErrorNessage(){
   if (this.AddEmployeeForm.controls['FirstName'].hasError('required')) {
@@ -250,7 +252,7 @@ GetAllJopID(){
   this._EmployeeResourceServiceService.GetAllJopId().subscribe({
     next : (res) => {
       this.jopsId = res
-      console.log(res);
+      // console.log(res);
     },
     error : (err) => {
       console.log(err);
@@ -261,7 +263,7 @@ GetAllDepartmentID(){
   this._EmployeeResourceServiceService.GetAllDepartmentId().subscribe({
     next : (res) => {
       this.DepartmentsID = res
-      console.log(res);
+      // console.log(res);
     },
     error : (err) => {
       console.log(err);
@@ -272,7 +274,7 @@ GetAllBranchID(){
   this._EmployeeResourceServiceService.GetAllBranchId().subscribe({
     next : (res) => {
       this.BranchsId = res
-      console.log(res);
+      // console.log(res);
     },
     error : (err) => {
       console.log(err);
@@ -283,6 +285,8 @@ ngOnInit(): void {
   this.GetAllJopID()
   this.GetAllDepartmentID()
   this.GetAllBranchID()
+  console.log(this.AddEmployeeForm);
+  
 }
 
 

@@ -1,0 +1,126 @@
+<nav>
+    <span class="fw-bold fs-4" >ADD NEW UNIT</span>
+</nav>
+<main class="container py-2">
+    <form [formGroup]="AddNewUnitForm" >
+        <div class="d-flex justify-content-center section-3">
+            <p class="d-flex flex-column mx-1">
+                <mat-label class="asterix--before" >Project</mat-label>
+                <mat-form-field>
+                    <mat-select placeholder="EX. 5" formControlName="projectId">
+                    <mat-option  *ngFor="let ProjectData of AllProjects" [value]="ProjectData.id">
+                        {{ProjectData.projectname}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+            <p class="d-flex flex-column mx-1 ">
+                <mat-label class="asterix--before" >Unit NO</mat-label>
+                <mat-form-field appearance="fill">
+                    <input type="number" formControlName="UnitNO"  required matInput placeholder="Ex. 4">
+                  </mat-form-field>
+            </p>
+            <p class="d-flex flex-column mx-1">
+                <mat-label>Block</mat-label>
+                <mat-form-field appearance="fill">
+                    <input type="number" formControlName="Block"  required matInput placeholder="EX. 6">
+                  </mat-form-field>
+            </p>
+        </div>
+        <div class="d-flex justify-content-center section-3">
+            <p class="d-flex flex-column mx-1">
+                <mat-label class="asterix--before" >Type</mat-label>
+                <mat-form-field>
+                    <mat-select placeholder="EX. data" formControlName="TypeID"  >
+                    <mat-option *ngFor="let ProjectData of AllProjects" [value]="ProjectData.id">
+                        {{ProjectData.projectname}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+            <p class="d-flex flex-column mx-1 ">
+                <mat-label>Design No</mat-label>
+                <mat-form-field appearance="fill">
+                    <input #input1 formControlName="DesignNo"  matInput placeholder="EX. 8">
+                    <mat-hint align="end">{{input1.value.length}}/25</mat-hint>
+                  </mat-form-field>
+            </p>
+            <p class="d-flex flex-column mx-1">
+                <mat-label>Floor No</mat-label>
+                <mat-form-field appearance="fill">
+                    <input type="number" formControlName="FloorNo" matInput placeholder="EX. 5 ">
+                </mat-form-field>
+            </p>
+        </div>
+        <div class="d-flex justify-content-center section-2 ">
+            <p class="d-flex flex-column mx-1 ">
+                <mat-label>land No</mat-label>
+                <mat-form-field appearance="fill">
+                    <input #input2 formControlName="landNo" matInput placeholder="EX. Land Number">
+                    <mat-hint align="end">{{input2.value.length}}/25</mat-hint>
+                  </mat-form-field>
+            </p>
+            <p class="d-flex flex-column mx-1 ">
+                <mat-label>Construction Dimension</mat-label>
+                <mat-form-field appearance="fill">
+                    <input #input3 formControlName="ConstructionDimension"  matInput placeholder="EX. 25*60">
+                    <mat-hint align="end">{{input3.value.length}}/25</mat-hint>
+                  </mat-form-field>
+            </p>
+        </div>
+        <div class="d-flex justify-content-center  section-3">
+            <p class="d-flex flex-column mx-1">
+                <mat-label class="asterix--before">Lot Size</mat-label>
+                <mat-form-field appearance="fill">
+                    <input type="number" formControlName="LotSize" matInput placeholder="EX. 7">
+                </mat-form-field>
+            </p>
+            <p class="d-flex flex-column mx-1">
+                <mat-label>bath rooms</mat-label>
+                <mat-form-field appearance="fill">
+                    <input type="number" formControlName="bathrooms" matInput placeholder="EX. 5">
+                </mat-form-field>
+            </p>
+            <p class="d-flex flex-column mx-1">
+                <mat-label>bed rooms</mat-label>
+                <mat-form-field appearance="fill">
+                    <input type="number" formControlName="bedrooms" matInput placeholder="EX. 3">
+                </mat-form-field>
+            </p>
+        </div>
+        <div class="d-flex section-1 ">
+            <p class="d-flex flex-column">
+                <mat-label>Discrption</mat-label>
+                <mat-form-field>
+                    <textarea matInput formControlName="description" placeholder="EX. Project in Berlin with ......." ></textarea>
+                </mat-form-field>
+            </p>
+        </div>
+        <div class="d-flex section-3">
+            <mat-form-field floatLabel="always" class="mx-1" >
+                <mat-label class="asterix--before">Budget</mat-label>
+                <input matInput formControlName="budget" type="number" class="example-right-align" placeholder="EX. 2500">
+                <span matTextPrefix>$&nbsp;</span>
+                <span matTextSuffix>.00</span>
+            </mat-form-field>
+                <mat-form-field class="mx-1" >
+                  <mat-label class="asterix--before" >Start Date</mat-label>
+                  <input matInput formControlName="startdate" [matDatepicker]="dp3" readonly="true" placeholder="EX. 30/12/1997" >
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="mx-1" >
+                  <mat-label class="asterix--before" >End Date</mat-label>
+                  <input matInput formControlName="enddate"  [matDatepicker]="dp4" readonly="true" placeholder="EX. 30/12/1997">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="dp4"></mat-datepicker-toggle>
+                  <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                </mat-form-field>                 
+        </div>
+        <div class="d-flex justify-content-end">
+            <button [disabled]="!AddNewUnitForm.valid" (click)="addNewUnit()"  class="btn btn-success">Add NEW UNIT</button>
+        </div>
+    </form>
+
+</main>

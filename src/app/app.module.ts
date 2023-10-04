@@ -24,6 +24,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './HR/Components/home-page/home-page.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { LandingComponent } from './HR/Components/landing/landing.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
+import { AddNewComponent } from './Opreation/Components/add-new/add-new.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +40,7 @@ import { LandingComponent } from './HR/Components/landing/landing.component';
     DashboardComponent,
     HomePageComponent,
     LandingComponent,
+    AddNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,12 @@ import { LandingComponent } from './HR/Components/landing/landing.component';
     MatStepperModule,
     MatSidenavModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    FormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

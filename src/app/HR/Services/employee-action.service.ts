@@ -34,7 +34,7 @@ export class EmployeeActionService {
         "name": "إدارة الحساب الالى",
         "managerFirstname": "string",
         "managerLastname": "string",
-        "jobtitle": "المدير العام",
+        "jobtitle": "manager",
         "branchsName": "المقر الرئيسي",
         "vacationHours": 0,
         "sickLeaveHours": 0
@@ -65,7 +65,7 @@ export class EmployeeActionService {
         "name": "إدارة الحساب الالى",
         "managerFirstname": "string",
         "managerLastname": "string",
-        "jobtitle": "المدير العام",
+        "jobtitle": "leader",
         "branchsName": "المقر الرئيسي",
         "vacationHours": 0,
         "sickLeaveHours": 0
@@ -159,7 +159,7 @@ export class EmployeeActionService {
         "managerFirstname": "string",
         "managerLastname": "string",
         "jobtitle": "معاون المدير العام",
-        "branchsName": "المقر الرئيسي",
+        "branchsName": "branchTest",
         "vacationHours": 0,
         "sickLeaveHours": 0
     },
@@ -190,11 +190,12 @@ export class EmployeeActionService {
         "managerFirstname": "ahmed",
         "managerLastname": "string",
         "jobtitle": "معاون المدير العام",
-        "branchsName": "المقر الرئيسي",
+        "branchsName": "branchTest",
         "vacationHours": 0,
         "sickLeaveHours": 0
     },
     {
+      
         "countOfRows": 7,
         "id": 13,
         "firstname": "ahmed",
@@ -221,7 +222,7 @@ export class EmployeeActionService {
         "managerFirstname": "ahmed",
         "managerLastname": "string",
         "jobtitle": "معاون المدير العام",
-        "branchsName": "المقر الرئيسي",
+        "branchsName": "branchTest",
         "vacationHours": 0,
         "sickLeaveHours": 0
     }
@@ -234,8 +235,14 @@ export class EmployeeActionService {
   addNewEmployee(modal : {}):Observable<{}>{
   return this._HttpClient.post(`${this.baseUrl}/api/HR/Employees/Post`,modal)  
   }
-  GetAllEmployees():Observable<any>{
-    return this._HttpClient.get(`${this.baseUrl}/api/HR/Employees/GetAll`)
+  GetAllEmployees(PageNo: number,PageSize: number):Observable<any>{    
+    return this._HttpClient.get(`${this.baseUrl}/api/HR/Employees/GetAll?PageNo=${PageNo}&PageSize=${PageSize}&SearchColumn=Lastname&SortColumn=Lastname&SortOrder=ASC`)
+  }
+  DeleteEmployee(id : number):Observable<any>{
+    return this._HttpClient.delete(`${this.baseUrl}/api/HR/Employees/Delete/${id}`)
+  }
+  UpdateEmployee(id : number,modal : {}):Observable<any>{
+    return this._HttpClient.put(`${this.baseUrl}/api/HR/Employees/Put/${id}`, modal)
   }
 
 }

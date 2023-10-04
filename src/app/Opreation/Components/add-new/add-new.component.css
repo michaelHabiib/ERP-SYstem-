@@ -1,0 +1,44 @@
+nav{
+    background-color: #ff725e;
+    height: 60px;
+    color: white;
+    padding-top: 25px;
+    padding-left: 35px;
+}
+body{
+    background-color: white;
+}
+.asterix--before:before {
+    content: "*";
+    color: red;
+}
+.section-3 .d-flex{
+    width: 100%;
+}
+.section-3  mat-form-field {
+    width: 100%;
+}
+.section-3 .d-flex mat-form-field {  
+    width: calc(100%);
+}
+.section-2 .d-flex{
+    width: 100%;
+}
+.section-2 .d-flex mat-form-field {  
+    width: calc(100%);
+}
+.section-1 .d-flex{
+    width: 100%;
+}
+.section-1 .d-flex mat-form-field {  
+    width: calc(100%);
+}
+textarea{
+    min-height: 100px;
+    max-height: 100px !important;
+}
+@media (max-width: 767px) {
+    form .d-flex {
+        flex-direction: column;
+    }
+}
