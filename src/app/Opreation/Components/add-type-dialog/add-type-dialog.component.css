@@ -1,0 +1,21 @@
+h3{
+    background-color: #ff725e;
+    height: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.form mat-form-field{
+    width: 100%;
+}
+::ng-deep snack-bar-container.custom-snackbar {
+    background: yellow;
+  }

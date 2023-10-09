@@ -1,0 +1,26 @@
+<h3>Add New Type</h3>
+<div class="example-container p-2 m-2">
+    <form [formGroup]="addNewTypeForm" class="form">
+      <mat-form-field appearance="outline" >
+        <mat-label>Select Group Type</mat-label>
+        <mat-select formControlName="groupType" >
+          <mat-option value="unit">Unit</mat-option>
+          <mat-option value="project">project</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Enter Type Arabic</mat-label>
+            <input matInput   placeholder="Ex. villa" formControlName="typeAr"  > 
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline"   >
+            <mat-label>Enter Type English</mat-label>
+            <input matInput   placeholder="Ex. villa" formControlName="typeEn">
+          </mat-form-field>
+        
+
+          <button class="btn btn-success" [disabled]="!addNewTypeForm.valid" (click)="addNewType()"
+          [ngClass]="{ 'animate__animated  animate__flipInx': !addNewTypeForm.valid, 'animate__animated  animate__flipInY': addNewTypeForm.valid }" >Add New Type</button>
+      
+    </form>
+  </div>

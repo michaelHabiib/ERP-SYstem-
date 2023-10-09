@@ -1,0 +1,11 @@
+<mat-label class="asterix--before" >Type</mat-label>
+<div [formGroup]="parent" >
+    <mat-form-field class="w-100">
+        <mat-select placeholder="EX. data" formControlName="TypeID"   >
+        <mat-option *ngFor="let GroupType of GroupsType" [value]="GroupType.id">
+            {{GroupType.typeEn}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+

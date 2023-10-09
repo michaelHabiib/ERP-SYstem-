@@ -14,11 +14,9 @@ body{
     color: red;
 }
 .section-3 .d-flex{
-    width: 100%;
-}
-.section-3 .d-flex{
     width: calc(100%/3);
 }
+
 .section-3 .d-flex mat-form-field {  
     width: calc(100%);
 }
@@ -42,10 +40,13 @@ textarea{
     form .d-flex {
         flex-direction: column;
     }
-    form .d-flex {
-        width: 100% !important;
-    }
-    mat-form-field{
-        width: 100%;
-    }
+}
+.panel-title{
+    min-width: 60% !important;
+}
+.panel-header{
+    width: 100%;
+}
+.panel-descrption{
+    width: 40% !important;
 }

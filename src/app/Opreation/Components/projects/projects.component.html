@@ -1,0 +1,12 @@
+<mat-label class="asterix--before" >Project</mat-label>
+<div [formGroup]="parent" >
+    <mat-form-field class="w-100">
+        <mat-select placeholder="EX. 5" formControlName="projectId">
+        <mat-option  *ngFor="let ProjectData of AllProjects" [value]="ProjectData.id">
+            {{ProjectData.projectname}}
+        </mat-option>
+        </mat-select>
+        <!-- <mat-error>{{projectIdErrorNessage()}}</mat-error> -->
+    </mat-form-field>
+</div>
+

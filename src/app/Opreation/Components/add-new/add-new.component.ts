@@ -3,17 +3,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { OpreationActionHelpersService } from '../../Services/opreation-action-helpers.service';
 import { OpereationServicesService } from '../../Services/opereation-services.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectDialogComponent } from '../project-dialog/project-dialog.component';
+import { TypesDialogComponent } from '../types-dialog/types-dialog.component';
 @Component({
   selector: 'app-add-new',
   templateUrl: './add-new.component.html',
   styleUrls: ['./add-new.component.css']
 })
 export class AddNewComponent implements OnInit {
-  AllProjects : any = []
+
   
   constructor(public _OpreationActionHelpersService : OpreationActionHelpersService,
-              public _OpereationServicesService : OpereationServicesService){
+              public _OpereationServicesService : OpereationServicesService,
+              public dialog: MatDialog){
 
   }
   
@@ -34,18 +37,13 @@ export class AddNewComponent implements OnInit {
     enddate :  new FormControl('', Validators.required),
     description :  new FormControl('',Validators.maxLength(225))
   })
-
-  GetAllProjects(){
-    this._OpreationActionHelpersService.GetAllProjects().subscribe({
-      next : (res) =>{ 
-        console.log(res);
-        this.AllProjects = res
-      },
-      error : (err) =>{
-        console.log(err);
-      }
-    })
+  openDialogProject() {
+    const dialogRef = this.dialog.open(ProjectDialogComponent);
   }
+  openDialogType() {
+    const dialogRef = this.dialog.open(TypesDialogComponent);
+  }
+
   addNewUnit(){
     console.log(this.AddNewUnitForm);
     const modal : {} = {
@@ -70,6 +68,7 @@ export class AddNewComponent implements OnInit {
     this._OpereationServicesService.AddNewUnit(modal).subscribe({
       next : (res) => {
         console.log(res);
+        this.AddNewUnitForm.reset()
       },
       error : (err) =>{
         console.log(err);
@@ -77,9 +76,88 @@ export class AddNewComponent implements OnInit {
     })
     
   }
+  projectIdErrorNessage(){
+    if (this.AddNewUnitForm.controls['projectId'].hasError('required')) {
+      return 'Please Select Project';
+    }else{
+      return '';
+    }
+  }
+  UnitNOErrorNessage(){
+    if (this.AddNewUnitForm.controls['UnitNO'].hasError('required')) {
+      return 'Unit number Is Required ';
+    }else{
+      return '';
+    }
+  }
+  DesignNoErrorNessage(){
+    if (this.AddNewUnitForm.controls['DesignNo'].hasError('required')) {
+      return 'Design Number is Required';
+    } else if(this.AddNewUnitForm.controls['DesignNo'].hasError('maxLength')){
+      return 'Maximum Chracteris 25';
+    } else{
+      return '';
+    }
+  }
+  TypeIDErrorNessage(){
+    if (this.AddNewUnitForm.controls['TypeID'].hasError('required')) {
+      return 'Type Is Required';
+    }else{
+      return '';
+    }
+  }
+  landNoErrorNessage(){
+    if (this.AddNewUnitForm.controls['landNo'].hasError('maxLength')) {
+      return 'maximum Number of Charcter is 25';
+    }else{
+      return '';
+    }
+  }
+  LotSizeErrorNessage(){
+    if (this.AddNewUnitForm.controls['LotSize'].hasError('required')) {
+      return 'lot Size is Required';
+    }else{
+      return '';
+    }
+  }
+  ConstructionDimensionErrorNessage(){
+    if (this.AddNewUnitForm.controls['ConstructionDimension'].hasError('maxLength')) {
+      return 'maximum Number of Charcter is 25';
+    }else{
+      return '';
+    }
+  }
+  budgetErrorNessage(){
+    if (this.AddNewUnitForm.controls['budget'].hasError('required')) {
+      return 'budget is Required';
+    }else{
+      return '';
+    }
+  }
+  startdateErrorNessage(){
+    if (this.AddNewUnitForm.controls['startdate'].hasError('required')) {
+      return 'Start Date is Required';
+    }else{
+      return '';
+    }
+  }
+  enddateErrorNessage(){
+    if (this.AddNewUnitForm.controls['enddate'].hasError('required')) {
+      return 'End Date is Required';
+    }else{
+      return '';
+    }
+  }
+  descriptionErrorNessage(){
+    if (this.AddNewUnitForm.controls['description'].hasError('required')) {
+      return 'Unit Description is Required';
+    }else{
+      return '';
+    }
+  }
 
   ngOnInit(): void {
-    this.GetAllProjects()
+    // this.GetAllProjects()
   }
 
 }

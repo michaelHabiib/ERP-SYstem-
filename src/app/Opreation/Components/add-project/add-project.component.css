@@ -1,0 +1,8 @@
+h3{
+    background-color: #ff725e;
+    height: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

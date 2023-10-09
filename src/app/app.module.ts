@@ -30,7 +30,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
 import { AddNewComponent } from './Opreation/Components/add-new/add-new.component';
-
+import { UnitDataComponent } from './Opreation/Components/unit-data/unit-data.component';
+import { TypesDialogComponent } from './Opreation/Components/types-dialog/types-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { TypesComponentsComponent } from './Opreation/Components/types-components/types-components.component';
+import { AddTypeDialogComponent } from './Opreation/Components/add-type-dialog/add-type-dialog.component';
+import { ProjectsComponent } from './Opreation/Components/projects/projects.component';
+import { ProjectDialogComponent } from './Opreation/Components/project-dialog/project-dialog.component';
+import { AddProjectComponent } from './Opreation/Components/add-project/add-project.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +48,13 @@ import { AddNewComponent } from './Opreation/Components/add-new/add-new.componen
     HomePageComponent,
     LandingComponent,
     AddNewComponent,
+    UnitDataComponent,
+    TypesDialogComponent,
+    TypesComponentsComponent,
+    AddTypeDialogComponent,
+    ProjectsComponent,
+    ProjectDialogComponent,
+    AddProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +78,8 @@ import { AddNewComponent } from './Opreation/Components/add-new/add-new.componen
     MatProgressSpinnerModule,
     MatPaginatorModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

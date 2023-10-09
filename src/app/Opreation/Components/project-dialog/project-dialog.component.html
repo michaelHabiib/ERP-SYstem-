@@ -1,0 +1,73 @@
+<h3> Projects</h3>
+<main  class="my-2 py-2 container" >
+    <!-- <button class="btn btn-info text-white my-2" (click)="openDialog()" >Add Project</button> -->
+    <button class="btn btn-info text-white my-2" (click)="openDialog()" >Add Project</button>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let projectForm of projectsForm" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Name : {{projectForm.value.projectname}}
+            </mat-panel-title>
+            <mat-panel-description  class="d-flex">
+                    <div class="" >type : {{projectForm.value.projectTypeEn}} </div>
+            </mat-panel-description>
+            <div class="me-4 delete" (click)="deleteProject(projectForm.value.id)" ><mat-icon class="text-denger" >delete</mat-icon></div>
+          </mat-expansion-panel-header>
+          <form [formGroup]="projectForm" >
+            <div class="example-container d-flex flex-column justify-content-center align-items-center">
+                <mat-form-field appearance="outline" class="w-100" >
+                  <mat-label>Project Name</mat-label>
+                  <input matInput #input maxlength="25" 
+                  placeholder="Ex. villa" formControlName="projectname" >
+                  <mat-hint align="end">{{input.value.length}}/25</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-select placeholder="EX. Type" formControlName="projectTypeEn"   >
+                    <mat-option *ngFor="let GroupType of GroupsType" [value]="GroupType.id">
+                        {{GroupType.typeEn}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100" >
+                    <input matInput #input maxlength="25" 
+                    placeholder="Ex. Cairo" formControlName="location" >
+                    <mat-hint align="end">{{input.value.length}}/25</mat-hint>
+                  </mat-form-field>
+              </div>
+              <div class="d-flex flex-column">
+                <div class="d-flex flex-column mx-1">
+                    <mat-form-field floatLabel="always" class="mx-1" appearance="outline">
+                        <input matInput formControlName="budget" type="number" class="example-right-align" placeholder="EX. 2500">
+                        <span matTextPrefix>$&nbsp;</span>
+                        <!-- <mat-error>{{budgetErrorNessage()}}</mat-error>  -->
+                    </mat-form-field>
+                </div>
+                <div class="d-flex flex-column mx-1">
+                    <mat-form-field class="" appearance="outline">                 
+                      <input matInput formControlName="startdate" [matDatepicker]="dp3" readonly="true" placeholder="EX. 30/12/1997" >
+                      <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                      <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                      <!-- <mat-error>{{startdateErrorNessage()}}</mat-error>  -->
+                    </mat-form-field>
+                </div>
+                <div class="d-flex flex-column mx-1">
+                    <mat-form-field class="" appearance="outline">
+                      <input matInput formControlName="enddate"  [matDatepicker]="dp4" readonly="true" placeholder="EX. 30/12/1997">
+                      <mat-datepicker-toggle matIconSuffix [for]="dp4"></mat-datepicker-toggle>
+                      <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                      <!-- <mat-error>{{enddateErrorNessage()}}</mat-error>  -->
+                    </mat-form-field>   
+                </div>              
+            </div>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-success" [disabled]="!projectForm.valid" (click)="updateProject(projectForm)" >Update</button>
+              </div>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+</main>
+<div class="loading-layout" *ngIf="loading" >
+    <mat-progress-spinner  class="spinner" color="primary" mode="indeterminate" ></mat-progress-spinner>
+  </div>
+    
+  
