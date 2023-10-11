@@ -1,0 +1,14 @@
+<main>
+    <form class="container pb-3" [formGroup]="LogInForm" >
+        <h3 class="text-center fw-bold fs-3 mt-2">Log In</h3>
+         
+        <input formControlName="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="User Name">
+        <div class="d-flex password">
+            <input [type]="hide ? 'password' : 'text'"  formControlName="password"  class="form-control" id="exampleFormControlInput3" placeholder="Password">
+            <mat-icon matSuffix class="pointer" (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon> 
+        </div>
+        <button class="btn btn-pill fw-bold" [ngClass]="LogInForm.valid ? 'red' : 'valid'" (click)="LogIn()" [disabled]="!LogInForm.valid" >Sign In</button>
+    </form>
+</main>
+
+<!-- <app-verfiction-dialog></app-verfiction-dialog> -->

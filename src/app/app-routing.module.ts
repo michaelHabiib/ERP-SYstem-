@@ -6,6 +6,8 @@ import { DashboardComponent } from './HR/Components/dashboard/dashboard.componen
 import { HomePageComponent } from './HR/Components/home-page/home-page.component';
 import { AddNewComponent } from './Opreation/Components/add-new/add-new.component';
 import { UnitDataComponent } from './Opreation/Components/unit-data/unit-data.component';
+import { RegstrationComponent } from './Global/Login/Components/regstration/regstration.component';
+import { LoginComponent } from './Global/Login/Components/login/login.component';
 
 const routes: Routes = [
   {path: 'EmployeeData', component:EmployeeDataComponent},
@@ -13,6 +15,8 @@ const routes: Routes = [
   {path: 'newEmployeeForm',component:EmployeeInputFormComponent},
   {path: 'opreationForm',component:AddNewComponent},
   {path: 'opreationData',component:UnitDataComponent},
+  {path: 'regstir',component:RegstrationComponent},
+  {path: 'login',component:LoginComponent},
   {path: 'dashboard',component:DashboardComponent},
 ];
 

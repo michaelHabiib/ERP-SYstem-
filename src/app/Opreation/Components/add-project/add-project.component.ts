@@ -25,7 +25,6 @@ export class AddProjectComponent implements OnInit {
     enddate :  new FormControl('',Validators.required),
   })
   addNewProject(projectForm : FormGroup){
-    console.log(projectForm);
     const modal = {
       projectname: projectForm.value.projectname,
       typeId: projectForm.value.typeId,
@@ -34,10 +33,8 @@ export class AddProjectComponent implements OnInit {
       budget: projectForm.value.budget,
       location: projectForm.value.location,
     }
-    console.log(modal);
     this.OpreationActionHelpersService.addNewProject(modal).subscribe({
       next :  (res) =>{
-        console.log(res);
          this.dialog.close();
          this.dialog2.close()
       },
@@ -63,10 +60,7 @@ export class AddProjectComponent implements OnInit {
     this.OpreationActionHelpersService.GetTypesByGroupType('project').subscribe({
       next : (res) => {
         // console.log(res);
-          this.GroupsType = res
-
-        console.log(this.GroupsType);
-        
+          this.GroupsType = res        
       },
       error : (err) => {
         console.log(err);

@@ -39,6 +39,10 @@ textarea{
 @media (max-width: 767px) {
     form .d-flex {
         flex-direction: column;
+        width: 100% !important;
+    }
+    mat-form-field{
+        width: 100% !important;
     }
 }
 .panel-title{
@@ -49,4 +53,10 @@ textarea{
 }
 .panel-descrption{
     width: 40% !important;
+}
+.d-flex button{
+    width: 100px !important;
+}
+mat-icon.text-denger{
+    color: rgb(226, 47, 47);
 }

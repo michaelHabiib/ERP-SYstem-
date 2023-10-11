@@ -1,7 +1,10 @@
-<h3> Projects</h3>
+<nav class="d-flex small-header justify-content-between align-items-center">
+    <span class="fw-bold fs-4" >Projects</span>
+    <div class="d-flex">
+        <button class="btn   text-white" (click)="openDialog()" > Add Project</button>
+    </div>
+</nav>
 <main  class="my-2 py-2 container" >
-    <!-- <button class="btn btn-info text-white my-2" (click)="openDialog()" >Add Project</button> -->
-    <button class="btn btn-info text-white my-2" (click)="openDialog()" >Add Project</button>
     <mat-accordion>
         <mat-expansion-panel *ngFor="let projectForm of projectsForm" >
           <mat-expansion-panel-header>
@@ -20,13 +23,6 @@
                   <input matInput #input maxlength="25" 
                   placeholder="Ex. villa" formControlName="projectname" >
                   <mat-hint align="end">{{input.value.length}}/25</mat-hint>
-                </mat-form-field>
-                <mat-form-field class="w-100" appearance="outline">
-                    <mat-select placeholder="EX. Type" formControlName="projectTypeEn"   >
-                    <mat-option *ngFor="let GroupType of GroupsType" [value]="GroupType.id">
-                        {{GroupType.typeEn}}
-                    </mat-option>
-                    </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="w-100" >
                     <input matInput #input maxlength="25" 

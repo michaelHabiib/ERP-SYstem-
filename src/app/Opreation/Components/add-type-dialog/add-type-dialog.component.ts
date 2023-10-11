@@ -32,7 +32,6 @@ export class AddTypeDialogComponent {
   }
 
   addNewType(){
-    console.log(this.addNewTypeForm);
     const modal = {
       groupType :  this.addNewTypeForm.value.groupType,
       typeAr :  this.addNewTypeForm.value.typeAr,
@@ -44,8 +43,6 @@ export class AddTypeDialogComponent {
         this.openSnackBar('Type Added Successfully')
          this.dialog.close();
          this.dialog2.close()
-
-
       },
       error : (err) => {
         console.log(err);

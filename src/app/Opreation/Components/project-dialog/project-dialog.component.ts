@@ -3,6 +3,7 @@ import { OpreationActionHelpersService } from '../../Services/opreation-action-h
 import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
 import { AddProjectComponent } from '../add-project/add-project.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-project-dialog',
   templateUrl: './project-dialog.component.html',
@@ -10,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProjectDialogComponent implements OnInit {
   constructor(public OpreationActionHelpersService : OpreationActionHelpersService,
-  public dialog: MatDialog ){}
+  public dialog: MatDialog, private _snackBar : MatSnackBar ){}
   AllProjects : any [] = []
   projectsForm : any [] = []
   GroupsTypeToLoopOnit: any [] = []
@@ -21,7 +22,6 @@ export class ProjectDialogComponent implements OnInit {
     this.loading = true
     this.OpreationActionHelpersService.GetALlProjects().subscribe({
       next : (res) =>{ 
-        console.log(res);
         this.AllProjects = res
         this.looponData(this.AllProjects)
       },
@@ -50,9 +50,7 @@ export class ProjectDialogComponent implements OnInit {
   GetProjectTypes ( ) {
     this.OpreationActionHelpersService.GetTypesByGroupType('project').subscribe({
       next : (res) => {
-        // console.log(res);
           this.GroupsType = res
-        console.log(this.GroupsType);   
       },
       error : (err) => {
         console.log(err);
@@ -60,20 +58,19 @@ export class ProjectDialogComponent implements OnInit {
     })
   }
   updateProject(projectForm : any){
-    console.log(projectForm);
     const id = projectForm.value.id
     const modal = {
+      id : id,
       projectname: projectForm.value.projectname,
-      typeId:  projectForm.value.projectTypeEn,
+      typeId:  2,
       startdate: projectForm.value.startdate,
       enddate: projectForm.value.enddate,
       budget: projectForm.value.budget,
       location: projectForm.value.location,
     }
-    console.log(modal);
     this.OpreationActionHelpersService.updateProject(id, modal).subscribe({
       next : (res) => {
-        console.log(res);
+        this.openSnackBar('project Updated Successfully')
       },
       error : (err) => {
         console.log(err);
@@ -83,11 +80,18 @@ export class ProjectDialogComponent implements OnInit {
   openDialog(){
     const dialogRef = this.dialog.open(AddProjectComponent);
   }
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '',{
+      duration: 4000, // 5 seconds
+      panelClass: 'custom-snackbar',
+      verticalPosition: 'bottom', 
+      horizontalPosition: 'center'
+    });
+  }
   deleteProject(id : number){
     this.OpreationActionHelpersService.DeleteProject(id).subscribe({
       next : (res) =>{
         this.GetAllProjects()
-        console.log(res);
       },
       error : (err) =>{
         console.log(err);

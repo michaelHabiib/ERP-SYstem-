@@ -25,7 +25,7 @@ export class AddNewComponent implements OnInit {
     UnitNO : new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")]),
     Block : new FormControl('',Validators.pattern("^[0-9]*$")),
     DesignNo : new FormControl('',Validators.maxLength(25)),
-    TypeID : new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")]),
+    TypeID : new FormControl(3,[Validators.required,Validators.pattern("^[0-9]*$")]),
     FloorNo : new FormControl('',Validators.pattern("^[0-9]*$")),
     landNo : new FormControl('', Validators.maxLength(25)),
     LotSize : new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")]),
@@ -45,7 +45,6 @@ export class AddNewComponent implements OnInit {
   }
 
   addNewUnit(){
-    console.log(this.AddNewUnitForm);
     const modal : {} = {
       "projectId" : this.AddNewUnitForm.controls.projectId.value,
       "UnitNO" : this.AddNewUnitForm.controls.UnitNO.value,
@@ -63,11 +62,9 @@ export class AddNewComponent implements OnInit {
       "enddate" :this.AddNewUnitForm.controls.enddate.value,
       "description" :  this.AddNewUnitForm.controls.description.value
     }
-    console.log(modal);
     
     this._OpereationServicesService.AddNewUnit(modal).subscribe({
       next : (res) => {
-        console.log(res);
         this.AddNewUnitForm.reset()
       },
       error : (err) =>{
@@ -157,7 +154,6 @@ export class AddNewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.GetAllProjects()
   }
 
 }

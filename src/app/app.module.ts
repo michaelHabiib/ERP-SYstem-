@@ -38,6 +38,10 @@ import { AddTypeDialogComponent } from './Opreation/Components/add-type-dialog/a
 import { ProjectsComponent } from './Opreation/Components/projects/projects.component';
 import { ProjectDialogComponent } from './Opreation/Components/project-dialog/project-dialog.component';
 import { AddProjectComponent } from './Opreation/Components/add-project/add-project.component';
+import { RegstrationComponent } from './Global/Login/Components/regstration/regstration.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { LoginComponent } from './Global/Login/Components/login/login.component';
+import { VerfictionDialogComponent } from './Global/Login/Components/verfiction-dialog/verfiction-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +59,9 @@ import { AddProjectComponent } from './Opreation/Components/add-project/add-proj
     ProjectsComponent,
     ProjectDialogComponent,
     AddProjectComponent,
+    RegstrationComponent,
+    LoginComponent,
+    VerfictionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +86,8 @@ import { AddProjectComponent } from './Opreation/Components/add-project/add-proj
     MatPaginatorModule,
     FormsModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

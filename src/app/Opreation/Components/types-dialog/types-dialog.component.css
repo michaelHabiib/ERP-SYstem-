@@ -1,3 +1,11 @@
+nav{
+    background-color: #ff725e;
+    height: 40px;
+    color: white;
+    padding-top: 7x;
+    padding-left: 15px;
+    padding-right: 15px;
+}
 main{
     width: 800px;
     height: 500px !important;
@@ -26,6 +34,10 @@ mat-icon.text-denger{
     mat-form-field{
         width: 100% !important;
     }
+    .small-header{
+        flex-direction: row;
+    }
+
 }
 .spinner{
     position: absolute;
@@ -45,11 +57,3 @@ mat-icon.text-denger{
     justify-content: center;
     align-items: center;
   } 
-  h3{
-    background-color: #ff725e;
-    height: 30px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

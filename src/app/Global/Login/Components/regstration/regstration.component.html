@@ -1,0 +1,25 @@
+<main>
+    <form class="container pb-3" [formGroup]="regstrationForm" >
+        <h3 class="text-center fw-bold fs-3 mt-2">Register</h3>
+         
+        <div class="d-flex  password">
+            <input formControlName="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="User Name">
+            <mat-icon matSuffix class="pointer">badge</mat-icon> 
+
+        </div>
+        <div class="d-flex password">
+            <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput2" placeholder="Email">
+            <mat-icon matSuffix class="pointer">mail</mat-icon> 
+        </div>
+        <div class="d-flex password">
+            <input [type]="hide ? 'password' : 'text'"  formControlName="password"  class="form-control" id="exampleFormControlInput3" placeholder="Password">
+            <mat-icon matSuffix class="pointer" (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon> 
+        </div>
+        <mat-form-field appearance="outline"   >
+            <mat-select placeholder="Authouriztion" formControlName="rolepermissionsid" >
+              <mat-option [value]="RoleData.id" *ngFor="let RoleData of RolesData"  >{{RoleData.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="btn btn-pill fw-bold" (click)="InsertUser()" >Sign Up</button>
+    </form>
+</main>

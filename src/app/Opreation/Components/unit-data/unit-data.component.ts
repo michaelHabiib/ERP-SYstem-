@@ -6,7 +6,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TypesDialogComponent } from '../types-dialog/types-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectDialogComponent } from '../project-dialog/project-dialog.component';
-
+import { MatAccordion } from '@angular/material/expansion';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-unit-data',
   templateUrl: './unit-data.component.html',
@@ -19,13 +20,12 @@ export class UnitDataComponent implements OnInit {
   AllProjects! : any []
   constructor(public _OpreationActionHelpersService : OpreationActionHelpersService,
     public _OpereationServicesService : OpereationServicesService,
-    public dialog: MatDialog){}
+    public dialog: MatDialog, public _snackBar : MatSnackBar){}
 
  
   GetAllProjects(){
       this._OpereationServicesService.GetAllProjects().subscribe({
         next : (res) =>{ 
-          // console.log(res);
           this.AllProjects = res
         },
         error : (err) =>{
@@ -33,20 +33,16 @@ export class UnitDataComponent implements OnInit {
         }
       })
     }
-  selectedValue(event : MatSelectChange){
-    // console.log(event.value);
-    const projectName = event.value
-    console.log(projectName);
-    
-    this.GetAllUnits(1,10,projectName)
-  }
+  // selectedValue(event : MatSelectChange){
+  //   // console.log(event.value);
+  //   const unit = event.value
+  //   console.log(unit);
+  // }
 
   
-  GetAllUnits(PageNo : number, pageSize : number, pageName : string){
-    this._OpereationServicesService.GetAllUnit(PageNo,pageSize,pageName).subscribe({
+  GetAllUnits(){
+    this._OpereationServicesService.GetAllUnit().subscribe({
       next : (res) =>{
-        console.log(res);
-        
         this.AllUnits = res
         this.looponData(this.AllUnits)
       },
@@ -86,32 +82,38 @@ export class UnitDataComponent implements OnInit {
   UpdateUnit(unit : FormGroup){
     const id = unit.value.id
     const modal = {
-      "id": unit.value.id,
-      "projectId": unit.value.projectId,
-      "unitNo": unit.value.unitNo,
-      "block": unit.value.block,
-      "designNo": unit.value.designNo,
-      "typeId": unit.value.typeId,
-      "floorNo": unit.value.floorNo,
-      "landNo": unit.value.landNo,
-      "lotSize": unit.value.lotSize,
-      "constructionDimension": unit.value.constructionDimension,
-      "bedrooms": unit.value.bedrooms,
-      "bathrooms": unit.value.bathrooms,
-      "budget": unit.value.budget,
-      "startdate": unit.value.startdate,
-      "enddate": unit.value.enddate,
-      "description": unit.value.description,
-      "createdBy":  unit.value.createdBy,
-
+      id: unit.value.id,
+      projectId: unit.value.projectId,
+      unitNo: unit.value.unitNo,
+      block: unit.value.block,
+      designNo: unit.value.designNo,
+      typeId: 3,
+      floorNo: unit.value.floorNo,
+      landNo: unit.value.landNo,
+      lotSize: unit.value.lotSize,
+      constructionDimension: unit.value.constructionDimension,
+      bedrooms: unit.value.bedrooms,
+      bathrooms: unit.value.bathrooms,
+      budget: unit.value.budget,
+      startdate: unit.value.startdate,
+      enddate: unit.value.enddate,
+      description: unit.value.description,
+      createdBy:  unit.value.createdBy,
+      modifiedBy: unit.value.modifiedBy,
+      createdDate: "2023-10-11T02:42:59.647Z",
+      modifiedDate: "2023-10-11T02:42:59.647Z",
+      deleteTag: true,
     }
 
     this._OpereationServicesService.UpdateUnit(modal,id).subscribe({
       next : (res) => {
         console.log(res);
+        this.openSnackBar('Updated Successfully')
       },
       error : (err) =>{
         console.log(err);
+        this.openSnackBar(err.message)
+        
       }
     })
   }
@@ -119,7 +121,7 @@ export class UnitDataComponent implements OnInit {
     const id = unit.value.id
     this._OpereationServicesService.DeleteUnit(id).subscribe({
       next : (res) => {
-        console.log(res);
+        this.GetAllUnits()
       },
       error : (err) => {
         console.log(err);
@@ -132,10 +134,19 @@ export class UnitDataComponent implements OnInit {
   openDialogType() {
     const dialogRef = this.dialog.open(TypesDialogComponent);
   }
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '',{
+      duration: 4000, // 5 seconds
+      panelClass: 'custom-snackbar',
+      verticalPosition: 'bottom', 
+      horizontalPosition: 'center'
+    });
+  }
 
 
 
 ngOnInit(): void {
   this.GetAllProjects()
+  this.GetAllUnits()
 }
 }

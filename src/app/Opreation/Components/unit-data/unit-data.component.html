@@ -5,17 +5,16 @@
         <button class="btn fw-bold text-white" (click)="openDialogType()"> Types</button>
     </div>
 </nav>
-<div class="container my-4 animate__bounceInRight animate__animated ">
+<!-- <div class="container my-4 animate__bounceInRight animate__animated ">
     <mat-form-field>
         <mat-label>Select Project</mat-label>
         <mat-select (selectionChange)="selectedValue($event)" >
-          <mat-option *ngFor="let project of AllProjects" [value]="project.projectname">{{project.projectname}}</mat-option>
+          <mat-option *ngFor="let unit of AllUnits" [value]="unit.projectname">{{unit.projectname}}</mat-option>
         </mat-select>
     </mat-form-field>
-</div>
-<div class="container animate__bounceIn animate__animated " >
+</div> -->
+<div class="container animate__bounceIn animate__animated mt-4 " >
     <mat-accordion  >
-
         <mat-expansion-panel *ngFor="let unit of UpdateOpreationUnit;let i= index" >
           <mat-expansion-panel-header class="panel-header">
             <mat-panel-title class="panel-title">
@@ -23,6 +22,9 @@
             </mat-panel-title>
             <mat-panel-description class="panel-descrption" >
                 <span>UNIT NUMBER : </span><span class="ps-1">{{unit.value.unitNo}}</span>
+                <!-- <button class="btn btn-danger mx-1"  (click)="DeleteUnit(unit)" >Delete</button> -->
+                <div class="me-4 delete" (click)="DeleteUnit(unit)" ><mat-icon class="text-denger" >delete</mat-icon></div>
+
             </mat-panel-description>
           </mat-expansion-panel-header>
           <form [formGroup]="unit" >
@@ -31,7 +33,7 @@
                     <mat-label class="asterix--before" >Project</mat-label>
                     <mat-form-field>
                         <mat-select placeholder="EX. 5" formControlName="projectId">
-                        <mat-option  *ngFor="let ProjectData of AllProjects" [value]="unit.unit">
+                        <mat-option  *ngFor="let ProjectData of AllProjects" [value]="ProjectData.id">
                             {{ProjectData.projectname}}
                         </mat-option>
                         </mat-select>
@@ -41,7 +43,7 @@
                 <p class="d-flex flex-column mx-1 ">
                     <mat-label class="asterix--before" >Unit NO</mat-label>
                     <mat-form-field appearance="fill">
-                        <input type="number" formControlName="unitNo"  required matInput placeholder="Ex. 4">
+                        <input formControlName="unitNo"  required matInput placeholder="Ex. 4">
                       </mat-form-field>
                 </p>
                 <p class="d-flex flex-column mx-1">
@@ -51,17 +53,7 @@
                       </mat-form-field>
                 </p>
             </div>
-            <div class="d-flex justify-content-center section-3">
-                <p class="d-flex flex-column mx-1">
-                    <mat-label class="asterix--before" >Type</mat-label>
-                    <mat-form-field>
-                        <mat-select placeholder="EX. data" formControlName="typeId"  >
-                        <mat-option *ngFor="let ProjectData of AllProjects" [value]="ProjectData.id">
-                            {{ProjectData.projectname}}
-                        </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </p>
+            <div class="d-flex justify-content-center section-2 ">
                 <p class="d-flex flex-column mx-1 ">
                     <mat-label>Design No</mat-label>
                     <mat-form-field appearance="fill">
@@ -147,8 +139,7 @@
                     </mat-form-field>   
                 </div>              
             </div>
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-danger mx-1"  (click)="DeleteUnit(unit)" >Delete</button>
+            <div class="d-flex justify-content-end flex-row">
                 <button class="btn btn-success mx-1"(click)="UpdateUnit(unit)" >Update</button>
                 <!-- <button [disabled]="!AddNewUnitForm.valid" (click)="addNewUnit()"  class="btn btn-success">Add NEW UNIT</button> -->
             </div>

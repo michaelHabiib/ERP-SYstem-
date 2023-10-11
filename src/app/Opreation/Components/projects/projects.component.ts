@@ -25,7 +25,6 @@ export class ProjectsComponent implements OnInit {
   GetAllProjects(){
     this._OpereationServicesService.GetAllProjects().subscribe({
       next : (res) =>{ 
-        // console.log(res);
         this.AllProjects = res
       },
       error : (err) =>{

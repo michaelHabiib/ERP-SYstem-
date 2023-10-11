@@ -19,7 +19,8 @@ export class TypesDialogComponent implements OnInit {
     public dialog: MatDialog,public dialogRef : MatDialogRef<TypesDialogComponent> ){}
   unitForm : FormGroup = new FormGroup({
     groupType : new FormControl('',[Validators.required,Validators.maxLength(25)]),
-    typeEn : new FormControl('',[Validators.required])
+    typeEn : new FormControl('',[Validators.required]),
+    typeAr : new FormControl('',[Validators.required])
   })
   GetTypesByGroupTypeUnit ( ) {
     this.loading = true
@@ -61,7 +62,6 @@ export class TypesDialogComponent implements OnInit {
       this.GroupsType.push(groupTypeFormGroup)
     }
     this.loading = false
-    // console.log(this.GroupsType);
   }
   DeleteType(id : number){
     this.OpreationActionHelpersService.DeleteType(id).subscribe({
@@ -83,10 +83,8 @@ export class TypesDialogComponent implements OnInit {
       typeAr: form.value.typeAr,
       typeEn: form.value.typeEn,
     }
-    console.log(modal);
     this.OpreationActionHelpersService.updateType(modal).subscribe({
       next : (res) => {
-        console.log(res);
         this.dialogRef.close()
       },
       error : (err) => {
@@ -97,8 +95,6 @@ export class TypesDialogComponent implements OnInit {
   openDialog(){
     const dialogRef = this.dialog.open(AddTypeDialogComponent);
   }
-
-  
   ngOnInit(): void {
     this.GetTypesByGroupTypeUnit()
   }

@@ -51,6 +51,6 @@
         </div>              
     </div>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-success" (click)="addNewProject(addProjectForm)">Add Project </button>
+        <button class="btn btn-success" [disabled]="!addProjectForm.valid" (click)="addNewProject(addProjectForm)">Add Project </button>
       </div>
   </form>

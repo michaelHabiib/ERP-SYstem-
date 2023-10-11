@@ -1,0 +1,24 @@
+
+.container{
+    width: 320px;
+    height: 150px;
+    background-image:linear-gradient(to right, #4a60bf,#854c8d);
+
+}
+input{
+    width: 40px !important;
+    height: 55px;
+    border: none !important;
+    /* border-bottom: 2px solid black !important; */
+    background-color: white ;
+    border-radius: 7px;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+mat-divider{
+    width: 30px !important;
+    background-color: white;
+    height: 2px !important; 
+}

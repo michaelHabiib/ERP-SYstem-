@@ -14,8 +14,8 @@ export class OpereationServicesService {
   AddNewUnit(modal : {}):Observable<any>{
     return this._HttpClient.post(`${this.baseUrl}/api/Operation/Units/UnitInsert`, modal)
   }
-  GetAllUnit(PageNo : number, PageSize : number, Projectname :string):Observable<any>{
-    return this._HttpClient.get(`${this.baseUrl}/api/Operation/Units/UnitsGetAll?SearchValue=${Projectname}&PageNo=${PageNo}&PageSize=${PageSize}&SortColumn=Projectname&SortOrder=ASC&SearchColumn=Projectname`)
+  GetAllUnit():Observable<any>{
+    return this._HttpClient.get(`${this.baseUrl}/api/Operation/Units/UnitsGetAll?PageNo=1&PageSize=10&SortColumn=Projectname&SortOrder=ASC&SearchColumn=Projectname`)
   }
   GetUnitByID(id : number):Observable<any>{
     return this._HttpClient.get(`${this.baseUrl}/api/Operation/Units/UnitGetById/${id}`)

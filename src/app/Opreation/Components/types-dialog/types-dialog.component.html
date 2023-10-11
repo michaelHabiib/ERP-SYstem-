@@ -1,14 +1,19 @@
-<h3>Types</h3>
+<nav class="d-flex small-header justify-content-between align-items-center">
+  <span class="fw-bold fs-4" >Types</span>
+  <div class="d-flex">
+      <button class="btn   text-white" (click)="openDialog()"> Add Type</button>
+  </div>
+</nav>
 <main  class="my-2 py-2 container" >
-    <button class="btn btn-info text-white my-2" (click)="openDialog()" >Add Type</button>
+    <!-- <button class="btn btn-info text-white my-2" (click)="openDialog()" >Add Type</button> -->
     <mat-accordion>
         <mat-expansion-panel *ngFor="let groupTypeFormGroup of GroupsType" >
           <mat-expansion-panel-header>
             <mat-panel-title>
-              GroupsType : {{groupTypeFormGroup.value.groupType}}
+              Type : {{groupTypeFormGroup.value.groupType}}
             </mat-panel-title>
             <mat-panel-description  class="d-flex">
-                    <div class="" >type : {{groupTypeFormGroup.value.typeEn}} </div>
+                    <div class="" >Name : {{groupTypeFormGroup.value.typeEn}} </div>
             </mat-panel-description>
             <div class="me-4" (click)="DeleteType(groupTypeFormGroup.value.id)" ><mat-icon class="text-denger" >delete</mat-icon></div>
           </mat-expansion-panel-header>
@@ -27,7 +32,7 @@
                   <mat-hint align="end">{{input1.value.length}}/25</mat-hint>
                 </mat-form-field>
               </div>
-              <div class="d-flex">
+              <!-- <div class="d-flex">
                 <mat-form-field class="w-100 mx-1" appearance="outline" >
                   <mat-label>Select Group Type</mat-label>
                   <mat-select formControlName="groupType" >
@@ -35,7 +40,7 @@
                     <mat-option value="project">project</mat-option>
                   </mat-select>
                 </mat-form-field>
-              </div>
+              </div> -->
               <div class="d-flex">
                 <button class="btn btn-success" (click)="updateType(groupTypeFormGroup)" >Update</button>
               </div>
@@ -43,7 +48,7 @@
         </mat-expansion-panel>
       </mat-accordion>
 </main>
-<div class="loading-layout" *ngIf="loading" >
+<div class="loading-layout" *ngIf="loading" > 
   <mat-progress-spinner  class="spinner" color="primary" mode="indeterminate" ></mat-progress-spinner>
 </div>
   
