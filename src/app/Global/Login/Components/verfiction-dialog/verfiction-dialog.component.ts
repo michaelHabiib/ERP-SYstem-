@@ -13,11 +13,15 @@ export class VerfictionDialogComponent implements OnInit {
   @ViewChild('input4') input4!: ElementRef<HTMLInputElement>;
   @ViewChild('input5') input5!: ElementRef<HTMLInputElement>;
   @ViewChild('input6') input6!: ElementRef<HTMLInputElement>;
+  status! : boolean 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               public RegsterAndLoginService : RegsterAndLoginService) {}
   ngOnInit(): void {
     console.log(this.data);
+    this.status = this.data.username[1]
+    console.log(this.status);
+    
   }
   onInputChange(nextInput: HTMLInputElement): void {
     if (nextInput) {
@@ -49,13 +53,7 @@ export class VerfictionDialogComponent implements OnInit {
       this.input5.nativeElement.value,
       this.input6.nativeElement.value
     ];
-    console.log(inputValues);
-    
-
     const code = inputValues.join('');
-    console.log(code);
-    
-    
     let modal = {
       username : this.data.username,
       code : code

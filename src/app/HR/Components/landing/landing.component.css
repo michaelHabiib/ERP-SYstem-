@@ -28,3 +28,7 @@
     max-width: 100% !important;
     height: 485px !important;
 }
+.image{
+    z-index: -100 !important;
+    position: relative;
+}

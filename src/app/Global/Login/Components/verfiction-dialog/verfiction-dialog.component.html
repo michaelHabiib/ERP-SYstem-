@@ -1,6 +1,8 @@
-<main class="d-flex justify-content-center align-items-center flex-column main">
+<main *ngIf="status"  class="d-flex justify-content-center align-items-center flex-column main">
     <div class="container">
-        <form class="d-flex justify-content-center align-items-center pt-5 mt-1 ">
+        <h3 class="text-center text-white" >Hello {{data.username[0]}}</h3>
+        <h4 class="text-center text-white">Please Check Your Email</h4>
+        <form class="d-flex justify-content-center align-items-center pt-1 mt-1 ">
                 <input #input1 (input)="onInputChange(input2)" inputtype="numeric" min="0" max="9" required pattern="[0-9\s]" minlength="1" maxlength="1" class="ms-1 text-center">
                 <input #input2 (input)="onInputChange(input3)" inputtype="numeric" min="0" max="9" required pattern="[0-9\s]" minlength="1" maxlength="1" class="ms-1 text-center">
                 <input #input3 (input)="onInputChange(input4)" inputtype="numeric" min="0" max="9" required pattern="[0-9\s]" minlength="1" maxlength="1" class="mx-1 text-center">
@@ -9,6 +11,11 @@
                 <input #input5 (input)="onInputChange(input6)" inputtype="numeric" min="0" max="9" required pattern="[0-9\s]" minlength="1" maxlength="1" class="ms-1 text-center">
                 <input #input6 (input)="verfctionCode()" inputtype="numeric" min="0" max="9" required pattern="[0-9\s]" minlength="1" maxlength="1" class="ms-1 text-center">
         </form>        
+    </div>
+</main>
+<main *ngIf="!status" class="d-flex justify-content-center align-items-center flex-column main">
+    <div class="container d-flex justify-content-center align-items-center">
+        <p class="text-center text-white fs-5">{{data.username[0]}}</p>
     </div>
 </main>
 

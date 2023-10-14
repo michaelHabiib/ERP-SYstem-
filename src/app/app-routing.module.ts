@@ -8,10 +8,12 @@ import { AddNewComponent } from './Opreation/Components/add-new/add-new.componen
 import { UnitDataComponent } from './Opreation/Components/unit-data/unit-data.component';
 import { RegstrationComponent } from './Global/Login/Components/regstration/regstration.component';
 import { LoginComponent } from './Global/Login/Components/login/login.component';
+import { MainNavbarComponent } from './Global/masterPage/Components/main-navbar/main-navbar.component';
+import { MasterPageContainerComponent } from './Global/masterPage/Components/master-page-container/master-page-container.component';
 
 const routes: Routes = [
   {path: 'EmployeeData', component:EmployeeDataComponent},
-  {path: '', component:HomePageComponent},
+  {path: '', component:MasterPageContainerComponent},
   {path: 'newEmployeeForm',component:EmployeeInputFormComponent},
   {path: 'opreationForm',component:AddNewComponent},
   {path: 'opreationData',component:UnitDataComponent},

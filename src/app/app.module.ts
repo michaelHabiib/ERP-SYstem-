@@ -42,6 +42,9 @@ import { RegstrationComponent } from './Global/Login/Components/regstration/regs
 import {MatDividerModule} from '@angular/material/divider';
 import { LoginComponent } from './Global/Login/Components/login/login.component';
 import { VerfictionDialogComponent } from './Global/Login/Components/verfiction-dialog/verfiction-dialog.component';
+import { MainNavbarComponent } from './Global/masterPage/Components/main-navbar/main-navbar.component';
+import { MasterPageContainerComponent } from './Global/masterPage/Components/master-page-container/master-page-container.component';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +65,8 @@ import { VerfictionDialogComponent } from './Global/Login/Components/verfiction-
     RegstrationComponent,
     LoginComponent,
     VerfictionDialogComponent,
+    MainNavbarComponent,
+    MasterPageContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +92,8 @@ import { VerfictionDialogComponent } from './Global/Login/Components/verfiction-
     FormsModule,
     MatMenuModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

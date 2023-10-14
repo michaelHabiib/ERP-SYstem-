@@ -10,5 +10,8 @@
         <button class="btn btn-pill fw-bold" [ngClass]="LogInForm.valid ? 'red' : 'valid'" (click)="LogIn()" [disabled]="!LogInForm.valid" >Sign In</button>
     </form>
 </main>
+<div class="loading-layout" *ngIf="loading" >
+    <mat-progress-spinner  class="spinner" color="primary" mode="indeterminate" ></mat-progress-spinner>
+</div>
 
 <!-- <app-verfiction-dialog></app-verfiction-dialog> -->
